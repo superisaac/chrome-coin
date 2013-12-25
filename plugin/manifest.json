@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Chrome Coin",
+  "description": "BTC/LTC tickers, 主要市场的比特币, 莱特币行情.",
+  "version": "1.0",
+
+  "permissions": [
+      "https://data.mtgox.com/",
+      "https://data.btcchina.com/",
+      "http://www.okcoin.com/",
+      "https://www.bitstamp.net/",
+      "https://btc-e.com/",
+      "https://www.chbtc.com/",
+      "https://data.fxbtc.com/",
+      "https://goxbtc.com/",
+      "http://www.chbtc.com/",
+      "http://api.796.com/"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  }
+}
+

@@ -1,0 +1,39 @@
+* {
+    font-family: Arial, 'Helvetica Neue', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+}
+
+.last-market {
+    background-color: lightcyan;
+}
+
+#price td {
+    font-size: 12px;
+    line-height: 20px;
+    vertical-align: middle;
+}
+
+#price th {
+    font-size: 11px;
+    color: gray;
+    font-weight: normal;
+}
+
+#price .name {
+    width: 210px;
+    text-align: left;
+}
+
+.trend-up .last {
+    color: green;
+}
+.trend-down .last {
+    color: red;
+}
+
+#price .last,
+#price .vol,
+#price .high,
+#price .low {
+    text-align: right;
+    width: 120px;
+}
