@@ -76,7 +76,7 @@ function addTicker(opts) {
 	if (oldR) {
 	    if(oldR.mean &&
 	       record.timestamp - oldR.timestamp < 3600000) {
-		record.mean = (oldR.mean * 359 + record.last) / 360.0;
+		record.mean = (oldR.mean * 59 + record.last) / 60.0;
 	    } else {
 		record.mean = record.last;
 	    }
@@ -98,8 +98,8 @@ function addTicker(opts) {
 	if (r.last > r.mean) {
 	    clsname += ' trend-up';
 	    dir = '↑';
-	//} else if (r.last < r.mean) {
-	} else {
+	} else if (r.last < r.mean) {
+	//} else {
 	    clsname += ' trend-down';
 	    dir = '↓';
 	}
@@ -112,7 +112,7 @@ function addTicker(opts) {
 	    namecol = '<a href="' + ticker.site + '">' + ticker.name + '</a>';
 	}
 	tr += makeTd('name', namecol);
-	tr += makeTd('last', ticker.c + toFloat(r.last, 2) + dir);
+	tr += makeTd('last', dir + ticker.c + toFloat(r.last, 2));
 	tr += makeTd('low', ticker.c + toFloat(r.low, 2));
 	tr += makeTd('high', ticker.c + toFloat(r.high, 2));
 	tr += makeTd('vol', toFloat(r.vol, 2));
