@@ -122,7 +122,7 @@ function addTicker(opts) {
     tickers.push(ticker);
 }
 
-addTicker({
+/*addTicker({
     'market': 'mtgox',
     //'site': 'https://www.mtgox.com',
     'name': 'MtGox',
@@ -140,7 +140,7 @@ addTicker({
 	};
 	return record;
     }
-});
+}); */
 
 addTicker({
     'market': 'bitstamp',
@@ -181,14 +181,14 @@ addTicker({
     'market': 'okcoin',
     'name': 'OKCoin',
     'c': '¥',
-    'url': 'http://www.okcoin.com/api/ticker.do',
+    'url': 'https://www.okcoin.com/api/ticker.do',
     'filter': function(data) {
 	var record = data['ticker'];
 	return record;
     }
 });
 
-addTicker({
+/*addTicker({
     'market': 'chbtc',
     'name': '中国比特币',
     'c': '¥',
@@ -197,7 +197,7 @@ addTicker({
 	var record = data['ticker'];
 	return record;
     }
-});
+}); */
 
 addTicker({
     'market': 'fxbtc',
@@ -211,7 +211,7 @@ addTicker({
     }
 });
 
-addTicker({
+/*addTicker({
     'market': 'goxbtc',
     'name': 'GOXBTC',
     'c': '¥',
@@ -220,7 +220,7 @@ addTicker({
 	var record = data['ticker'];
 	return record;
     }
-});
+}); */
 
 addTicker({
     'market': 'f796',
@@ -257,7 +257,7 @@ addTicker({
     }
 });
 
-addTicker({
+/*addTicker({
     'market': 'fxbtcltc',
     'name': 'FXBTC(LTC)',
     'c': '¥',
@@ -267,7 +267,7 @@ addTicker({
 	record.last = record.last_rate;
 	return record;
     }
-});
+}); */
 
 document.addEventListener('DOMContentLoaded', function() {
     refreshRecords();
