@@ -257,6 +257,28 @@ addTicker({
     }
 });
 
+addTicker({
+    'market': 'huobi',
+    'name': '火币网',
+    'c': '¥',
+    'url': 'http://market.huobi.com/staticmarket/ticker_btc_json.js',
+    'filter': function(data) {
+	var record = data['ticker'];
+	return record;
+    }
+});
+
+addTicker({
+    'market': 'huobiltc',
+    'name': '火币网(LTC)',
+    'c': '¥',
+    'url': 'http://market.huobi.com/staticmarket/ticker_ltc_json.js',
+    'filter': function(data) {
+	var record = data['ticker'];
+	return record;
+    }
+});
+
 /*addTicker({
     'market': 'fxbtcltc',
     'name': 'FXBTC(LTC)',

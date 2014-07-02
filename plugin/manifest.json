@@ -5,17 +5,18 @@
   "version": "1.0",
 
   "permissions": [
-      "https://data.mtgox.com/",
-      "https://data.btcchina.com/",
-      "http://www.okcoin.com/",
-      "https://www.okcoin.com/",
-      "https://www.bitstamp.net/",
-      "https://btc-e.com/",
-      "https://www.chbtc.com/",
-      "https://data.fxbtc.com/",
-      "https://goxbtc.com/",
-      "http://www.chbtc.com/",
-      "http://api.796.com/"
+    "https://data.mtgox.com/",
+    "https://data.btcchina.com/",
+    "http://www.okcoin.com/",
+    "https://www.okcoin.com/",
+    "https://www.bitstamp.net/",
+    "https://btc-e.com/",
+    "https://www.chbtc.com/",
+    "https://data.fxbtc.com/",
+    "https://goxbtc.com/",
+    "http://www.chbtc.com/",
+    "http://api.796.com/",
+    "http://market.huobi.com/"
   ],
   "browser_action": {
     "default_icon": "icon.png",
