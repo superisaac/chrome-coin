@@ -184,16 +184,26 @@ addTicker({
 });
 
 addTicker({
+  'market': 'haobtc',
+  'name': '好比特币',
+  'c': '¥',
+  'url': 'https://haobtc.com/api/v1/price/cny',
+  'filter': function(data) {
+	  var record = data;
+    record.last = (parseFloat(record.sell) + parseFloat(record.buy))/2;
+/*    record.high = record.last;
+    record.low = record.last; */
+	  return record;
+  }
+});
+
+addTicker({
   'market': 'okcoin',
   'name': 'OKCoin',
   'c': '¥',
   'url': 'https://www.okcoin.cn/api/v1/ticker.do?symbol=btc_cny',
   'filter': function(data) {
 	  var record = data.ticker;
-    /*record.last = parseFloat(record.last);
-    record.high = parseFloat(record.high);
-    record.low = parseFloat(record.low);
-    record.vol = parseFloat(record.vol); */
     record.time = data.date;
 	  return record;
   }

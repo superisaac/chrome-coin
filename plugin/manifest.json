@@ -5,6 +5,7 @@
   "version": "1.0",
 
   "permissions": [
+    "https://haobtc.com/",
     "https://data.mtgox.com/",
     "https://data.btcchina.com/",
     "https://www.okcoin.cn/",
