@@ -1,6 +1,12 @@
 var records = {};
 var tickers = [];
 var storageKey = 'btcticker.records';
+var rateKey = 'usd.vs.cny';
+
+var usdVSCny = localStorage.getItem(rateKey);
+if (!usdVSCny) {
+  usdVSCny = 6.489;
+}
 
 var localRecords = localStorage.getItem(storageKey);
 if (localRecords) {
@@ -193,39 +199,58 @@ addTicker({
   }
 });
 
-/*addTicker({
-  'market': 'chbtc',
-  'name': '中国比特币',
+addTicker({
+  'market': 'okcoin_this_week',
+  'name': 'OKCoin(Week)',
   'c': '¥',
-  'url': 'http://www.chbtc.com/data/ticker',
+  'url': 'https://www.okcoin.com/api/v1/future_ticker.do?symbol=btc_usd&contract_type=this_week',
   'filter': function(data) {
-	var record = data['ticker'];
-	return record;
-  }
-  }); */
-
-/*addTicker({
-  'market': 'fxbtc',
-  'name': 'FXBTC',
-  'c': '¥',
-  'url': 'https://data.fxbtc.com/api?op=query_ticker&symbol=btc_cny',
-  'filter': function(data) {
-	  var record = data['ticker'];
-	  record.last = record.last_rate;
+	  var record = data.ticker;
+    record.last = usdVSCny * record.last;
+    record.buy = usdVSCny * record.buy;
+    record.sell = usdVSCny * record.sell;
+    record.high = usdVSCny * record.high;
+    record.low = usdVSCny * record.low;
+    record.time = data.date;
 	  return record;
   }
-}); */
+});
 
-/*addTicker({
-  'market': 'goxbtc',
-  'name': 'GOXBTC',
+addTicker({
+  'market': 'okcoin_next_week',
+  'name': 'OKCoin(NextWeek)',
   'c': '¥',
-  'url': 'https://goxbtc.com/api/new/btc_cny/ticker.htm',
+  'url': 'https://www.okcoin.com/api/v1/future_ticker.do?symbol=btc_usd&contract_type=next_week',
   'filter': function(data) {
-	var record = data['ticker'];
-	return record;
+	  var record = data.ticker;
+    record.last = usdVSCny * record.last;
+    record.buy = usdVSCny * record.buy;
+    record.sell = usdVSCny * record.sell;
+    record.high = usdVSCny * record.high;
+    record.low = usdVSCny * record.low;
+
+    record.time = data.date;
+	  return record;
   }
-  }); */
+});
+
+addTicker({
+  'market': 'okcoin_quarter',
+  'name': 'OKCoin(Quarter)',
+  'c': '¥',
+  'url': 'https://www.okcoin.com/api/v1/future_ticker.do?symbol=btc_usd&contract_type=quarter',
+  'filter': function(data) {
+	  var record = data.ticker;
+    record.last = usdVSCny * record.last;
+    record.buy = usdVSCny * record.buy;
+    record.sell = usdVSCny * record.sell;
+    record.high = usdVSCny * record.high;
+    record.low = usdVSCny * record.low;
+    
+    record.time = data.date;
+	  return record;
+  }
+});
 
 /*addTicker({
   'market': 'f796',
@@ -239,7 +264,7 @@ addTicker({
 }); */
 
 //LTC
-addTicker({
+/*addTicker({
   'market': 'btceltc',
   'name': 'BTC-E(LTC)',
   'c': '$',
@@ -250,18 +275,19 @@ addTicker({
 	  return record;
   }
 });
+*/
 
-addTicker({
+/*addTicker({
   'market': 'okcoinltc',
   'name': 'OKCoin(LTC)',
   'c': '¥',
-  'url': 'http://www.okcoin.cn/api/v1/ticker.do?symbol=ltc_cny',
+  'url': 'https://www.okcoin.cn/api/v1/ticker.do?symbol=ltc_cny',
   'filter': function(data) {
 	  var record = data['ticker'];
     record.time = data.date;
 	  return record;
   }
-});
+}); */
 
 addTicker({
   'market': 'huobi',
@@ -275,7 +301,7 @@ addTicker({
   }
 });
 
-addTicker({
+/*addTicker({
   'market': 'huobiltc',
   'name': '火币网(LTC)',
   'c': '¥',
@@ -286,19 +312,7 @@ addTicker({
 	  return record;
   }
 });
-
-/*addTicker({
-  'market': 'fxbtcltc',
-  'name': 'FXBTC(LTC)',
-  'c': '¥',
-  'url': 'https://data.fxbtc.com/api?op=query_ticker&symbol=ltc_cny',
-  'filter': function(data) {
-	var record = data['ticker'];
-	record.last = record.last_rate;
-	return record;
-  }
-  }); */
-
+*/
 document.addEventListener('DOMContentLoaded', function() {
   refreshRecords();
   tickers.forEach(function(ticker) {
@@ -308,6 +322,15 @@ document.addEventListener('DOMContentLoaded', function() {
 		    ticker.load();
 	    }, 10000);
 	  }, Math.random() * 10000);
+  });
+
+  loadJSON("https://www.okcoin.com/api/v1/exchange_rate.do", function(err, body) {
+    if(!err) {
+      usdVSCny = body.rate;
+      localStorage.setItem(rateKey, "" + usdVSCny);
+    } else {
+      console.error(err);
+    }
   });
 });
 
