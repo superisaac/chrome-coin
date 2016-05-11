@@ -160,7 +160,7 @@ addTicker({
   }
 });
 
-addTicker({
+/*addTicker({
   'market': 'btce',
   'name': 'BTC-E',
   'c': '$',
@@ -170,7 +170,7 @@ addTicker({
 	  record.vol = record.vol_cur;
 	  return record;	
   }
-});
+});*/
 
 addTicker({
   'market': 'btcchina',
@@ -187,12 +187,10 @@ addTicker({
   'market': 'haobtc',
   'name': '好比特币',
   'c': '¥',
-  'url': 'https://haobtc.com/api/v1/price/cny',
+  'url': 'https://haobtc.com/exchange/api/v1/ticker',
   'filter': function(data) {
-	  var record = data;
-    record.last = (parseFloat(record.sell) + parseFloat(record.buy))/2;
-/*    record.high = record.last;
-    record.low = record.last; */
+	  var record = data.ticker;
+    record.time = data.date;
 	  return record;
   }
 });
