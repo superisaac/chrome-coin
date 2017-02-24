@@ -184,10 +184,10 @@ addTicker({
 });
 
 addTicker({
-  'market': 'haobtc',
-  'name': '好比特币',
+  'market': 'bixin',
+  'name': '币信',
   'c': '¥',
-  'url': 'https://haobtc.com/exchange/api/v1/ticker',
+  'url': 'https://api.bixin.com/exchange/api_hermes/v1/ticker',
   'filter': function(data) {
 	  var record = data.ticker;
     record.time = data.date;
