@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  }, Math.random() * 10000);
   });
 
-  loadJSON("https://www.okcoin.com/api/v1/exchange_rate.do", function(err, body) {
+  loadJSON("https://www.okex.com/api/v1/exchange_rate.do", function(err, body) {
     if(!err) {
       usdVSCny = body.rate;
       localStorage.setItem(rateKey, "" + usdVSCny);
